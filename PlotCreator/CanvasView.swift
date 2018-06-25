@@ -10,13 +10,9 @@ import UIKit
 
 class CanvasView: UIView {
 
-    var path: UIBezierPath?
-    var temporaryPath: UIBezierPath?
-    var points = [CGPoint]()
     var forcePaths = [ForcePath]()
-    var pointCount = 0
-
-    var isCallTouchMoved = false
+    var currentPosition = 0
+    var positionHistory: [Int] = [0]
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -29,19 +25,20 @@ class CanvasView: UIView {
         super.draw(rect)
 
         var pointCount = 0
-        for fp in forcePaths {
-            for p in fp.points {
+        for findex in 0 ..< positionHistory[currentPosition] {
+            for p in forcePaths[findex].points {
                 plot(p)
             }
-            pointCount += fp.points.count
+            pointCount += forcePaths[findex].points.count
         }
-        print(pointCount)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
         let currentPoint = touch.location(in: self)
 
+        forcePaths = Array<ForcePath>(forcePaths.prefix(positionHistory[currentPosition]))
+        positionHistory = Array<Int>(positionHistory.prefix(currentPosition + 1))
         forcePaths.append(ForcePath(point: currentPoint, force: touch.force / touch.maximumPossibleForce))
     }
 
@@ -58,6 +55,22 @@ class CanvasView: UIView {
         let currentPoint = touch.location(in: self)
 
         forcePaths.append(ForcePath(point: currentPoint, force: touch.force / touch.maximumPossibleForce))
+        positionHistory.append(forcePaths.count)
+        currentPosition = positionHistory.count - 1
+        setNeedsDisplay()
+    }
+
+    func redo() {
+        if currentPosition < positionHistory.count - 1 {
+            currentPosition += 1
+        }
+        setNeedsDisplay()
+    }
+
+    func undo() {
+        if currentPosition > 0 {
+            currentPosition -= 1
+        }
         setNeedsDisplay()
     }
 }

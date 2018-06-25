@@ -10,6 +10,8 @@ import Foundation
 import CoreGraphics
 
 struct ForcePath {
+    static var density: CGFloat = 5.0
+
     let point: CGPoint
     let force: CGFloat
 
@@ -19,7 +21,7 @@ struct ForcePath {
         self.point = point
         self.force = force
 
-        let pointCount = Int(5 * force) + 1
+        let pointCount = Int(ForcePath.density * force) + 1
         for _ in 0 ..< pointCount {
             points.append(point.random(20.0 * (force + 0.1)))
         }

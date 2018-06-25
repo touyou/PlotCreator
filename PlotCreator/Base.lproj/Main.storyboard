@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14252.5"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,15 +25,50 @@
                                     <constraint firstAttribute="width" secondItem="y9T-wu-muq" secondAttribute="height" multiplier="25:25" id="QTF-Zt-X7P"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8D-f3-ryL">
+                                <rect key="frame" x="16" y="461" width="60" height="30"/>
+                                <color key="backgroundColor" red="0.99184095859999999" green="0.60073578360000002" blue="0.49745133520000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="OMx-iw-atN"/>
+                                </constraints>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="戻る">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapUndoButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="KLh-Au-gOz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edX-SU-y4g">
+                                <rect key="frame" x="84" y="461" width="60" height="30"/>
+                                <color key="backgroundColor" red="0.58786988259999995" green="0.81248700620000003" blue="0.59000819920000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="8kL-Vx-w8n"/>
+                                </constraints>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="進む">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapRedoButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="aUg-4F-1eA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.77052295209999999" green="0.81169146299999995" blue="0.83027458190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="q8D-f3-ryL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="3AL-Ck-bPu"/>
+                            <constraint firstItem="edX-SU-y4g" firstAttribute="leading" secondItem="q8D-f3-ryL" secondAttribute="trailing" constant="8" id="4QQ-yO-3HG"/>
+                            <constraint firstItem="q8D-f3-ryL" firstAttribute="top" secondItem="y9T-wu-muq" secondAttribute="bottom" constant="16" id="GiZ-7s-NXW"/>
                             <constraint firstItem="y9T-wu-muq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="YYx-Ri-KsE"/>
+                            <constraint firstItem="edX-SU-y4g" firstAttribute="top" secondItem="y9T-wu-muq" secondAttribute="bottom" constant="16" id="ftl-kL-eKd"/>
                             <constraint firstItem="y9T-wu-muq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="j8X-hA-BIN"/>
                             <constraint firstItem="y9T-wu-muq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zC5-Ly-yWj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="canvasView" destination="y9T-wu-muq" id="8dZ-I6-NsW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
