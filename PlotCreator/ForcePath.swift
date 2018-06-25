@@ -10,18 +10,6 @@ import Foundation
 import CoreGraphics
 
 struct ForcePath {
-//    /// copy bezier movement
-//    let elements: PathElement
-//    /// 0.0: normal, 1.0: force
-//    let force: CGFloat
-//    /// points
-//    var points = [CGPoint]()
-//    /// path point num
-//    var num: Int = 0
-//    init(elements: PathElement, force: CGFloat) {
-//        self.elements = elements
-//        self.force = force
-//    }
     let point: CGPoint
     let force: CGFloat
 
