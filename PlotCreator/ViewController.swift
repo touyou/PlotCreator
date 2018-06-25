@@ -24,4 +24,13 @@ class ViewController: UIViewController {
     @IBAction func tapRedoButton() {
         canvasView.redo()
     }
+
+    @IBAction func changeDensitySlider(_ sender: UISlider) {
+        ForcePath.density = CGFloat(sender.value)
+    }
+
+    @IBAction func changePointSizeSlider(_ sender: UISlider) {
+        CanvasView.pointSize = CGFloat(sender.value)
+        canvasView.setNeedsDisplay()
+    }
 }

@@ -26,13 +26,10 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8D-f3-ryL">
-                                <rect key="frame" x="16" y="461" width="60" height="30"/>
+                                <rect key="frame" x="16" y="461" width="167.5" height="30"/>
                                 <color key="backgroundColor" red="0.99184095859999999" green="0.60073578360000002" blue="0.49745133520000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="OMx-iw-atN"/>
-                                </constraints>
                                 <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="戻る">
+                                <state key="normal" title="undo">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -40,28 +37,64 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edX-SU-y4g">
-                                <rect key="frame" x="84" y="461" width="60" height="30"/>
+                                <rect key="frame" x="191.5" y="461" width="167.5" height="30"/>
                                 <color key="backgroundColor" red="0.58786988259999995" green="0.81248700620000003" blue="0.59000819920000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="8kL-Vx-w8n"/>
-                                </constraints>
                                 <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="進む">
+                                <state key="normal" title="redo">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="tapRedoButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="aUg-4F-1eA"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Density" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvA-Uc-LW1">
+                                <rect key="frame" x="16" y="499" width="63" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Point Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cjF-DC-JkO">
+                                <rect key="frame" x="16" y="566" width="81" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="eqU-Pe-FOJ">
+                                <rect key="frame" x="14" y="595" width="347" height="31"/>
+                                <color key="tintColor" red="0.32515102620000003" green="0.1307606399" blue="0.65917611119999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="changeDensitySlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="yjq-eB-cHz"/>
+                                    <action selector="changePointSizeSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="oab-a3-UfT"/>
+                                </connections>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="t6T-vI-VTX">
+                                <rect key="frame" x="14" y="528" width="347" height="31"/>
+                                <color key="tintColor" red="0.98836433889999997" green="0.34710094330000002" blue="0.20536470409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="changeDensitySlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="QkD-b0-odB"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" red="0.77052295209999999" green="0.81169146299999995" blue="0.83027458190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="cjF-DC-JkO" firstAttribute="top" secondItem="t6T-vI-VTX" secondAttribute="bottom" constant="8" id="1jm-Cb-bo8"/>
                             <constraint firstItem="q8D-f3-ryL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="3AL-Ck-bPu"/>
                             <constraint firstItem="edX-SU-y4g" firstAttribute="leading" secondItem="q8D-f3-ryL" secondAttribute="trailing" constant="8" id="4QQ-yO-3HG"/>
+                            <constraint firstItem="cjF-DC-JkO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Avq-TO-QYS"/>
+                            <constraint firstItem="t6T-vI-VTX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Dn6-dY-t7y"/>
+                            <constraint firstItem="yvA-Uc-LW1" firstAttribute="top" secondItem="q8D-f3-ryL" secondAttribute="bottom" constant="8" id="Ejo-ML-yGy"/>
                             <constraint firstItem="q8D-f3-ryL" firstAttribute="top" secondItem="y9T-wu-muq" secondAttribute="bottom" constant="16" id="GiZ-7s-NXW"/>
+                            <constraint firstItem="t6T-vI-VTX" firstAttribute="top" secondItem="yvA-Uc-LW1" secondAttribute="bottom" constant="8" id="OLz-a8-htD"/>
+                            <constraint firstItem="eqU-Pe-FOJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="SLb-ct-XbS"/>
+                            <constraint firstItem="edX-SU-y4g" firstAttribute="width" secondItem="q8D-f3-ryL" secondAttribute="width" id="ScS-bd-TCI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eqU-Pe-FOJ" secondAttribute="trailing" constant="16" id="TEf-eA-Hfe"/>
                             <constraint firstItem="y9T-wu-muq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="YYx-Ri-KsE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="edX-SU-y4g" secondAttribute="trailing" constant="16" id="YyV-ga-SKq"/>
                             <constraint firstItem="edX-SU-y4g" firstAttribute="top" secondItem="y9T-wu-muq" secondAttribute="bottom" constant="16" id="ftl-kL-eKd"/>
                             <constraint firstItem="y9T-wu-muq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="j8X-hA-BIN"/>
+                            <constraint firstItem="eqU-Pe-FOJ" firstAttribute="top" secondItem="cjF-DC-JkO" secondAttribute="bottom" constant="8" id="kEV-CB-DKV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t6T-vI-VTX" secondAttribute="trailing" constant="16" id="urt-lc-YET"/>
+                            <constraint firstItem="yvA-Uc-LW1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="yTp-gp-VjE"/>
                             <constraint firstItem="y9T-wu-muq" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zC5-Ly-yWj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

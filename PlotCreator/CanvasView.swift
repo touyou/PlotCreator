@@ -9,7 +9,9 @@
 import UIKit
 
 class CanvasView: UIView {
+    static var pointSize: CGFloat = 2.0
 
+    var path: UIBezierPath?
     var forcePaths = [ForcePath]()
     var currentPosition = 0
     var positionHistory: [Int] = [0]
@@ -23,6 +25,11 @@ class CanvasView: UIView {
     /// Call when we call setNeedsDisplay()
     override func draw(_ rect: CGRect) {
         super.draw(rect)
+
+        if let path = path {
+            UIColor.orange.setStroke()
+            path.stroke()
+        }
 
         var pointCount = 0
         for findex in 0 ..< positionHistory[currentPosition] {
@@ -40,6 +47,15 @@ class CanvasView: UIView {
         forcePaths = Array<ForcePath>(forcePaths.prefix(positionHistory[currentPosition]))
         positionHistory = Array<Int>(positionHistory.prefix(currentPosition + 1))
         forcePaths.append(ForcePath(point: currentPoint, force: touch.force / touch.maximumPossibleForce))
+
+        /// for user interaction
+        path = UIBezierPath()
+        path?.lineCapStyle = .round
+        path?.lineJoinStyle = .round
+        path?.lineWidth = 3.0
+        path?.move(to: currentPoint)
+
+        setNeedsDisplay()
     }
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -47,6 +63,9 @@ class CanvasView: UIView {
         let currentPoint = touch.location(in: self)
 
         forcePaths.append(ForcePath(point: currentPoint, force: touch.force / touch.maximumPossibleForce))
+
+        path?.addLine(to: currentPoint)
+
         setNeedsDisplay()
     }
 
@@ -57,6 +76,9 @@ class CanvasView: UIView {
         forcePaths.append(ForcePath(point: currentPoint, force: touch.force / touch.maximumPossibleForce))
         positionHistory.append(forcePaths.count)
         currentPosition = positionHistory.count - 1
+
+        path = nil
+
         setNeedsDisplay()
     }
 
@@ -81,9 +103,13 @@ extension CanvasView {
 
     /// plot dot
     func plot(_ point: CGPoint) {
-        let sqrt2 = sqrt(CGFloat(2.0))
+        let sqrt2 = sqrt(CanvasView.pointSize)
         UIColor.black.set()
-        UIBezierPath(ovalIn: CGRect(x: point.x - 1, y: point.y - 1, width: sqrt2, height: sqrt2)).fill()
+        UIBezierPath(ovalIn: CGRect(
+            x: point.x - CanvasView.pointSize / 2,
+            y: point.y - CanvasView.pointSize / 2,
+            width: sqrt2,
+            height: sqrt2)).fill()
     }
 
     /// plot line
