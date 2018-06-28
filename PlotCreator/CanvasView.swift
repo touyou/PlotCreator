@@ -12,6 +12,8 @@ class CanvasView: UIView {
     static var pointSize: CGFloat = 2.0
 
     var path: UIBezierPath?
+    var indicatorPath: UIBezierPath?
+    var subIndicatorPath: UIBezierPath?
     var forcePaths = [ForcePath]()
     var currentPosition = 0
     var positionHistory: [Int] = [0]
@@ -29,6 +31,16 @@ class CanvasView: UIView {
         if let path = path {
             UIColor.orange.setStroke()
             path.stroke()
+        }
+
+        if let subIndicator = subIndicatorPath {
+            UIColor(red: 0.0, green: 0.2, blue: 0.2, alpha: 0.1).setFill()
+            subIndicator.fill()
+        }
+
+        if let indicator = indicatorPath {
+            UIColor(red: 0.0, green: 0.0, blue: 0.8, alpha: 0.5).setFill()
+            indicator.fill()
         }
 
         var pointCount = 0
@@ -55,6 +67,9 @@ class CanvasView: UIView {
         path?.lineWidth = 3.0
         path?.move(to: currentPoint)
 
+        /// indicator
+        setIndicator(currentPoint, touch.force / touch.maximumPossibleForce)
+
         setNeedsDisplay()
     }
 
@@ -65,6 +80,9 @@ class CanvasView: UIView {
         forcePaths.append(ForcePath(point: currentPoint, force: touch.force / touch.maximumPossibleForce))
 
         path?.addLine(to: currentPoint)
+
+        /// indicator
+        setIndicator(currentPoint, touch.force / touch.maximumPossibleForce)
 
         setNeedsDisplay()
     }
@@ -78,6 +96,8 @@ class CanvasView: UIView {
         currentPosition = positionHistory.count - 1
 
         path = nil
+        indicatorPath = nil
+        subIndicatorPath = nil
 
         setNeedsDisplay()
     }
@@ -94,6 +114,18 @@ class CanvasView: UIView {
             currentPosition -= 1
         }
         setNeedsDisplay()
+    }
+
+    private func setIndicator(_ point: CGPoint, _ force: CGFloat) {
+
+        let radius = 20.0 * (force + 0.1) * 1.5
+
+        indicatorPath = UIBezierPath(ovalIn:
+            CGRect(x: point.x - radius, y: point.y - radius,
+                   width: radius * 2.0, height: radius * 2.0))
+        subIndicatorPath = UIBezierPath(ovalIn: CGRect(
+            x: point.x - radius * 5.0, y: point.y - radius * 5.0,
+            width: radius * 10.0, height: radius * 10.0))
     }
 }
 
