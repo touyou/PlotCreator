@@ -48,7 +48,14 @@ class CanvasView: UIView {
             for p in forcePaths[findex].points {
                 plot(p)
             }
-            pointCount += forcePaths[findex].points.count
+            pointCount += forcePaths[findex]._points.count
+        }
+        if pointCount > 1000 {
+
+            ForcePath.limitation = 1000.0 / Double(pointCount)
+        } else {
+
+            ForcePath.limitation = 1.0
         }
     }
 

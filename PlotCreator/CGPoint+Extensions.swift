@@ -58,4 +58,13 @@ public extension CGPoint {
         let randY = CGFloat.random(in: y - h ..< y + h)
         return CGPoint(x: randX, y: randY)
     }
+
+    func circled(_ center: CGPoint, _ radius: CGFloat) -> CGPoint {
+        let dist = (self - center).length
+        if dist <= radius {
+            return self
+        } else {
+            return center + (self - center) / dist * radius
+        }
+    }
 }
