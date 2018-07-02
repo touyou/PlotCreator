@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		461513A220E9C587007D11CB /* CustomPathConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461513A120E9C587007D11CB /* CustomPathConvertible.swift */; };
+		461513A420E9C675007D11CB /* CircledAreaPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461513A320E9C675007D11CB /* CircledAreaPath.swift */; };
 		469872B120D75B5400E6E270 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469872B020D75B5400E6E270 /* AppDelegate.swift */; };
 		469872B320D75B5400E6E270 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469872B220D75B5400E6E270 /* ViewController.swift */; };
 		469872B620D75B5400E6E270 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 469872B420D75B5400E6E270 /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		461513A120E9C587007D11CB /* CustomPathConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPathConvertible.swift; sourceTree = "<group>"; };
+		461513A320E9C675007D11CB /* CircledAreaPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircledAreaPath.swift; sourceTree = "<group>"; };
 		469872AD20D75B5400E6E270 /* PlotCreator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlotCreator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		469872B020D75B5400E6E270 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		469872B220D75B5400E6E270 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 				469872BC20D75B5500E6E270 /* Info.plist */,
 				469872C220D75B7300E6E270 /* CanvasView.swift */,
 				46D3055420DD3CA50040F262 /* ForcePath.swift */,
+				461513A120E9C587007D11CB /* CustomPathConvertible.swift */,
+				461513A320E9C675007D11CB /* CircledAreaPath.swift */,
 			);
 			path = PlotCreator;
 			sourceTree = "<group>";
@@ -151,7 +157,9 @@
 				469872C720D87F7A00E6E270 /* CGPoint+Extensions.swift in Sources */,
 				469872B320D75B5400E6E270 /* ViewController.swift in Sources */,
 				469872B120D75B5400E6E270 /* AppDelegate.swift in Sources */,
+				461513A420E9C675007D11CB /* CircledAreaPath.swift in Sources */,
 				46D3055520DD3CA50040F262 /* ForcePath.swift in Sources */,
+				461513A220E9C587007D11CB /* CustomPathConvertible.swift in Sources */,
 				469872C320D75B7300E6E270 /* CanvasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

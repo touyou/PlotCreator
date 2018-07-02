@@ -67,4 +67,10 @@ public extension CGPoint {
             return center + (self - center) / dist * radius
         }
     }
+
+    func equalTo(_ point2: CGPoint, dist: CGFloat) -> Bool {
+
+        return self.x + dist >= point2.x && self.x - dist <= point2.x &&
+            self.y + dist >= point2.y && self.y - dist <= point2.y
+    }
 }

@@ -9,7 +9,7 @@
 import Foundation
 import CoreGraphics
 
-struct ForcePath {
+struct ForcePath: CustomPathConvertible {
     static var density: CGFloat = 5.0
     static var limitation: Double = 1.0
 

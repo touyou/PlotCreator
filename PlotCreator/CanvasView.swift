@@ -14,7 +14,9 @@ class CanvasView: UIView {
     var path: UIBezierPath?
     var indicatorPath: UIBezierPath?
     var subIndicatorPath: UIBezierPath?
-    var forcePaths = [ForcePath]()
+    var beginPoint: CGPoint?
+    var forcePaths = [[CustomPathConvertible]]()
+    var tempForcePaths = [CustomPathConvertible]()
     var currentPosition = 0
     var positionHistory: [Int] = [0]
 
@@ -45,10 +47,12 @@ class CanvasView: UIView {
 
         var pointCount = 0
         for findex in 0 ..< positionHistory[currentPosition] {
-            for p in forcePaths[findex].points {
-                plot(p)
+            for fps in forcePaths[findex] {
+                for p in fps.points {
+                    plot(p)
+                }
+                pointCount += fps._points.count
             }
-            pointCount += forcePaths[findex]._points.count
         }
         if pointCount > 1000 {
 
@@ -63,9 +67,10 @@ class CanvasView: UIView {
         guard let touch = touches.first else { return }
         let currentPoint = touch.location(in: self)
 
-        forcePaths = Array<ForcePath>(forcePaths.prefix(positionHistory[currentPosition]))
+        forcePaths = Array<[CustomPathConvertible]>(forcePaths.prefix(positionHistory[currentPosition]))
+        tempForcePaths = []
         positionHistory = Array<Int>(positionHistory.prefix(currentPosition + 1))
-        forcePaths.append(ForcePath(point: currentPoint, force: touch.force / touch.maximumPossibleForce))
+        tempForcePaths.append(ForcePath(point: currentPoint, force: touch.force / touch.maximumPossibleForce))
 
         /// for user interaction
         path = UIBezierPath()
@@ -77,6 +82,9 @@ class CanvasView: UIView {
         /// indicator
         setIndicator(currentPoint, touch.force / touch.maximumPossibleForce)
 
+        /// begn place
+        beginPoint = currentPoint
+
         setNeedsDisplay()
     }
 
@@ -84,7 +92,7 @@ class CanvasView: UIView {
         guard let touch = touches.first else { return }
         let currentPoint = touch.location(in: self)
 
-        forcePaths.append(ForcePath(point: currentPoint, force: touch.force / touch.maximumPossibleForce))
+        tempForcePaths.append(ForcePath(point: currentPoint, force: touch.force / touch.maximumPossibleForce))
 
         path?.addLine(to: currentPoint)
 
@@ -98,13 +106,23 @@ class CanvasView: UIView {
         guard let touch = touches.first else { return }
         let currentPoint = touch.location(in: self)
 
-        forcePaths.append(ForcePath(point: currentPoint, force: touch.force / touch.maximumPossibleForce))
+        //        if currentPoint.equalTo(beginPoint!, dist: 10.0) {
+        //
+        //            path?.close()
+        //            forcePaths.append([CircledAreaPath(path: path!.cgPath)])
+        //        } else {
+
+        tempForcePaths.append(ForcePath(point: currentPoint, force: touch.force / touch.maximumPossibleForce))
+        forcePaths.append(tempForcePaths)
+        //        }
         positionHistory.append(forcePaths.count)
         currentPosition = positionHistory.count - 1
 
+        tempForcePaths = []
         path = nil
         indicatorPath = nil
         subIndicatorPath = nil
+        beginPoint = nil
 
         setNeedsDisplay()
     }
@@ -141,9 +159,9 @@ class CanvasView: UIView {
 extension CanvasView {
 
     /// plot dot
-    func plot(_ point: CGPoint) {
+    func plot(_ point: CGPoint, color: UIColor = .black) {
         let sqrt2 = sqrt(CanvasView.pointSize)
-        UIColor.black.set()
+        color.set()
         UIBezierPath(ovalIn: CGRect(
             x: point.x - CanvasView.pointSize / 2,
             y: point.y - CanvasView.pointSize / 2,
