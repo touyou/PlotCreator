@@ -141,6 +141,29 @@ class CanvasView: UIView {
         setNeedsDisplay()
     }
 
+    func takeSnapShot() -> UIImage {
+        let image: UIImage
+        UIGraphicsBeginImageContextWithOptions(self.frame.size, false, 0.0)
+        for findex in 0 ..< positionHistory[currentPosition] {
+            for fps in forcePaths[findex] {
+                for p in fps.points {
+                    plot(p)
+                }
+            }
+        }
+        image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
+
+    func reset() {
+
+        forcePaths = []
+        currentPosition = 0
+        positionHistory = [0]
+        setNeedsDisplay()
+    }
+
     private func setIndicator(_ point: CGPoint, _ force: CGFloat) {
 
         let radius = 20.0 * (force + 0.1) * 1.5

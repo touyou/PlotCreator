@@ -26,7 +26,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q8D-f3-ryL">
-                                <rect key="frame" x="16" y="461" width="167.5" height="30"/>
+                                <rect key="frame" x="16" y="461" width="109" height="30"/>
                                 <color key="backgroundColor" red="0.99184095859999999" green="0.60073578360000002" blue="0.49745133520000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="undo">
@@ -37,7 +37,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="edX-SU-y4g">
-                                <rect key="frame" x="191.5" y="461" width="167.5" height="30"/>
+                                <rect key="frame" x="133" y="461" width="109" height="30"/>
                                 <color key="backgroundColor" red="0.58786988259999995" green="0.81248700620000003" blue="0.59000819920000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="redo">
@@ -74,12 +74,25 @@
                                     <action selector="changeDensitySlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="QkD-b0-odB"/>
                                 </connections>
                             </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRE-nj-SVa">
+                                <rect key="frame" x="250" y="461" width="109" height="30"/>
+                                <color key="backgroundColor" red="0.26101338860000001" green="0.71150517459999996" blue="0.95937287810000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapSaveButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="dMc-OS-dub"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.77052295209999999" green="0.81169146299999995" blue="0.83027458190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="cjF-DC-JkO" firstAttribute="top" secondItem="t6T-vI-VTX" secondAttribute="bottom" constant="8" id="1jm-Cb-bo8"/>
                             <constraint firstItem="q8D-f3-ryL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="3AL-Ck-bPu"/>
                             <constraint firstItem="edX-SU-y4g" firstAttribute="leading" secondItem="q8D-f3-ryL" secondAttribute="trailing" constant="8" id="4QQ-yO-3HG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nRE-nj-SVa" secondAttribute="trailing" constant="16" id="4lu-mI-Rvk"/>
+                            <constraint firstItem="nRE-nj-SVa" firstAttribute="width" secondItem="edX-SU-y4g" secondAttribute="width" id="8DF-cy-PoQ"/>
+                            <constraint firstItem="nRE-nj-SVa" firstAttribute="top" secondItem="y9T-wu-muq" secondAttribute="bottom" constant="16" id="AH4-KQ-8QY"/>
                             <constraint firstItem="cjF-DC-JkO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Avq-TO-QYS"/>
                             <constraint firstItem="t6T-vI-VTX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Dn6-dY-t7y"/>
                             <constraint firstItem="yvA-Uc-LW1" firstAttribute="top" secondItem="q8D-f3-ryL" secondAttribute="bottom" constant="8" id="Ejo-ML-yGy"/>
@@ -89,7 +102,7 @@
                             <constraint firstItem="edX-SU-y4g" firstAttribute="width" secondItem="q8D-f3-ryL" secondAttribute="width" id="ScS-bd-TCI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eqU-Pe-FOJ" secondAttribute="trailing" constant="16" id="TEf-eA-Hfe"/>
                             <constraint firstItem="y9T-wu-muq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="YYx-Ri-KsE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="edX-SU-y4g" secondAttribute="trailing" constant="16" id="YyV-ga-SKq"/>
+                            <constraint firstItem="nRE-nj-SVa" firstAttribute="leading" secondItem="edX-SU-y4g" secondAttribute="trailing" constant="8" id="dEh-O6-JbF"/>
                             <constraint firstItem="edX-SU-y4g" firstAttribute="top" secondItem="y9T-wu-muq" secondAttribute="bottom" constant="16" id="ftl-kL-eKd"/>
                             <constraint firstItem="y9T-wu-muq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="j8X-hA-BIN"/>
                             <constraint firstItem="eqU-Pe-FOJ" firstAttribute="top" secondItem="cjF-DC-JkO" secondAttribute="bottom" constant="8" id="kEV-CB-DKV"/>

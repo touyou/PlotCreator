@@ -33,4 +33,23 @@ class ViewController: UIViewController {
         CanvasView.pointSize = CGFloat(sender.value)
         canvasView.setNeedsDisplay()
     }
+
+    @IBAction func tapSaveButton() {
+        let snapshot = canvasView.takeSnapShot()
+        UIImageWriteToSavedPhotosAlbum(snapshot, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError!, contextInfo: UnsafeMutableRawPointer) {
+
+        if error == nil {
+
+            let alertController = UIAlertController(title: "保存完了", message: "保存完了しました", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+
+                guard let `self` = self else { return }
+                self.canvasView.reset()
+            }))
+            present(alertController, animated: true, completion: nil)
+        }
+    }
 }
